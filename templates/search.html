@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient-record-Search page</title>
+    <link rel="stylesheet" href="{% static 'bootstraps-files/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstraps-files/lineawesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        *{
+            list-style: none;
+        }
+
+        .header{
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .header h4{
+            background-color: dodgerblue;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+        a:link{
+            text-decoration: none;
+        }
+
+        ul a{
+            font-size: 20px;
+            background-color: dodgerblue;
+            color: #fff;
+            padding: 9px;
+            border-radius: 0 0 10px 0;
+            font-style: italic;
+        }
+
+        ul a:hover{
+            font-style: normal;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul li{
+            margin-top: 25px;
+        }
+
+        .row_1 i{
+            width: 20%;
+        }
+        .row_1 input{
+            width: 80%;
+        }
+        .row{
+            margin-top: 20px;
+        }
+
+        .address textarea{
+            margin-bottom: 10px;
+        }
+
+        .body{
+            /* margin-top: 200px; */
+            /* text-align: center; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 50px;
+            background-color: #fff;
+            opacity: .8;
+        }
+
+        .body h2{
+            font-weight: 900;
+            font-size: 300%;
+        }
+        .body form {
+            width: 40%;
+        }
+
+        .body span{
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="la la-bars"></i></button> -->
+        <div class="brand">
+            <h4>Patient Record Management System</h4>
+        </div>
+        <form>
+            <i class="la la-search btn btn-secondary">&nbsp;&nbsp;<span style="font-family: sans-serif;" data-bs-toggle="modal" data-bs-target="#search" data-bs-whatever="@fat">Search Patient</span></i>
+        </form>
+    </header>
+{% for patient in patient_profile_list %}
+    <div class="body">
+        <h5>Search Result</h5>
+        <h3>Name: <span>{{patient.full_name}}</span></h3>
+        <h3>D.O.B: <span>{{patient.dob}}</span></h3>
+        <h3>Gender: <span>{{patient.gender}}</span></h3>
+        <h3>Address: <span>{{patient.addrss}}</span></h3>
+        <h3>L.G.A: <span>{{patient.lga}}</span></h3>
+        <h3>Matital Status: <span>{{patient.marital}}</span></h3>
+        <h3>Room: <span>{{patient.room}}</span></h3>
+        <h3>Apparatus: <span>{{patient.apparatus}}</span></h3>
+        <h3>Code: <span>{{patient.code}}</span></h3>
+    </div>
+{% endfor %}
+
+    <div class="modal fade" id="search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Search Patient</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/search" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <h6>Write The Patient Code</h6>
+                        <input type="text" name="code" class="form-control" placeholder="Input Code...">
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Search</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    
+
+<script src="{% static 'js/function.js' %}"></script>
+<script src="{% static 'bootstraps-files/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

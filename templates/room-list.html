@@ -1,0 +1,274 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient-record-Room view</title>
+    <link rel="stylesheet" href="{% static 'bootstraps-files/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstraps-files/lineawesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        *{
+            list-style: none;
+        }
+
+        /* body{
+            background: url(./bg-images/patient-bg3.jpg);
+            background-size: cover;
+            backdrop-filter: blur(3px);
+            height: 100vh;
+        } */
+        .header{
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .header h4{
+            background-color: dodgerblue;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+        a:link{
+            text-decoration: none;
+        }
+
+        ul a{
+            font-size: 20px;
+            background-color: dodgerblue;
+            color: #fff;
+            padding: 9px;
+            border-radius: 0 0 10px 0;
+            font-style: italic;
+        }
+
+        ul a:hover{
+            font-style: normal;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul li{
+            margin-top: 25px;
+        }
+
+        /* .offcanvas{
+            background: url(./bg-images/patient-bg2.jpg);
+            background-position: center;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+        } */
+
+        .row_1 i{
+            width: 20%;
+        }
+        .row_1 input{
+            width: 80%;
+        }
+        .row{
+            margin-top: 20px;
+        }
+
+        .address textarea{
+            margin-bottom: 10px;
+        }
+
+        .body{
+            margin-top: 100px;
+            margin-left: 10px;
+            margin-right: 10px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="la la-bars"></i></button>
+        <div class="brand">
+            <h4>Patient Record Management System</h4>
+        </div>
+    </header>
+    <div class="offcanver">
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Taps</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul>
+                    <!-- <li><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Add Patient</a></li> -->
+                    <li><a href="patient-view">View Patient</a></li>
+                </ul>
+                <a href="/logout" class="btn btn-danger">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="body">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRoom" data-bs-whatever="@fat">Add Room</button>
+        <table class="table caption-top">
+            <caption>List of Rooms</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="text-center">S/N</th>
+                <th scope="col" class="text-center">Room</th>
+                <th scope="col" class="text-center">Room Type</th>
+                <th scope="col" class="text-center">Description</th>
+                <th scope="col" class="text-center">Date Created</th>
+                <th scope="col" class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row" class="text-center">1</th>
+                <td class="text-center">Room-101</td>
+                <td class="text-center">3 Beds</td>
+                <td class="text-center">Is a ward room for multiple patient</td>
+                <td class="text-center">2021-3-15</td>
+                <td class="text-center">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#editRoom" data-bs-whatever="@fat" class="btn btn-primary">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button> -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Patient</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <h6>Full Name</h6>
+                        <input type="text" class="form-control" placeholder="Full Name">
+                    </div>
+                    <div class="row">
+                        <h6>Date Of Birth</h6>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="row">
+                        <h6>Gender</h6>
+                        <select name="" id="" class="form-control">
+                            <option value=""></option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <h6>Marital Status</h6>
+                        <select name="" id="" class="form-control">
+                            <option value=""></option>
+                            <option value="Female">Single</option>
+                            <option value="Male">Married</option>
+                            <option value="Female">Divoces</option>
+                            <option value="Female">Widowe</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <h6>L.G.A</h6>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="row address">
+                        <h3>Location</h3>
+                        <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Address"></textarea>
+                        <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="State"></textarea>
+                    </div>
+                    <div class="row">
+                        <h6>Room</h6>
+                        <select name="" id="" class="form-control">
+                            <option value="" aria-placeholder="Room.."></option>
+                        </select>
+                    </div>
+                    <div class="row row_1">
+                        <input type="text" class="form-control" id="code" placeholder="Run code..."><i class="btn btn-primary" onclick="code()">Run</i>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Add</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- room model -->
+
+    <div class="modal fade" id="addRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add Room</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <h6>Room</h6>
+                        <input type="text" class="form-control" placeholder="Room">
+                    </div>
+                    <div class="row">
+                        <h6>Room Type</h6>
+                        <input type="text" class="form-control" placeholder="Room Type">
+                    </div>
+                    <div class="row">
+                        <h6>Description</h6>
+                        <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Add</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editRoom" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Update Room</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <h6>Room</h6>
+                        <input type="text" class="form-control" placeholder="Room">
+                    </div>
+                    <div class="row">
+                        <h6>Room Type</h6>
+                        <input type="text" class="form-control" placeholder="Room Type">
+                    </div>
+                    <div class="row">
+                        <h6>Description</h6>
+                        <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Update</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script src="{% static 'js/function.js' %}"></script>
+<script src="{% static 'bootstraps-files/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

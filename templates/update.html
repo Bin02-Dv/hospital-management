@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient-record-home page</title>
+    <link rel="stylesheet" href="{% static 'bootstraps-files/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstraps-files/lineawesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        *{
+            list-style: none;
+        }
+
+        .header{
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .header h4{
+            background-color: dodgerblue;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+        a:link{
+            text-decoration: none;
+        }
+
+        ul a{
+            font-size: 20px;
+            background-color: dodgerblue;
+            color: #fff;
+            padding: 9px;
+            border-radius: 0 0 10px 0;
+            font-style: italic;
+        }
+
+        ul a:hover{
+            font-style: normal;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul li{
+            margin-top: 25px;
+        }
+
+        .row_1 i{
+            width: 20%;
+        }
+        .row_1 input{
+            width: 80%;
+        }
+        .row{
+            margin-top: 20px;
+        }
+
+        .address textarea{
+            margin-bottom: 10px;
+        }
+
+        .body{
+            /* margin-top: 200px; */
+            /* text-align: center; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 50px;
+            background-color: #fff;
+            opacity: .8;
+        }
+
+        .body h2{
+            font-weight: 900;
+            font-size: 300%;
+        }
+        .body form {
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="la la-bars"></i></button>
+        <div class="brand">
+            <h4>Patient Record Management System</h4>
+        </div>
+    </header>
+
+    <div class="body">
+        <form action="updaterecord/{{ patient.id }}" method="post">
+            <div class="row">
+                {% csrf_token %}
+                <div class="row">
+                    <h6>Full Name</h6>
+                    <input type="text" name="full_name" class="form-control" value="{{ patient.full_name }}">
+                </div>
+                <div class="row">
+                    <h6>Date Of Birth</h6>
+                    <input type="text" name="dob" class="form-control" value="{{ patient.dob }}">
+                </div>
+                <div class="row">
+                    <h6>Gender</h6>
+                    <input type="text" name="gender" class="form-control" value="{{ patient.gender }}">
+                </div>
+                <div class="row">
+                    <h6>Marital Status</h6>
+                    <input type="text" name="marital"  class="form-control" value="{{ patient.marital }}">
+                </div>
+                <div class="row">
+                    <h6>L.G.A</h6>
+                    <input type="text" name="lga" class="form-control" value="{{ patient.lga }}">
+                </div>
+                <div class="row address">
+                    <h3>Location</h3>
+                    <textarea name="address" id=""  cols="30" rows="2" class="form-control" placeholder="Address">{{ patient.addrss }}</textarea>
+                    <textarea name="state" id="" cols="30" rows="2" class="form-control" placeholder="State">{{ patient.state }}</textarea>
+                </div>
+                <div class="row">
+                    <h6>Room</h6>
+                    <input type="text" name="room" class="form-control" value="{{ patient.room }}">
+                </div>
+                <div class="row">
+                    <h6>Apparatus</h6>
+                    <input type="text" name="apparatus" class="form-control" value="{{ patient.apparatus }}">
+                </div>
+                <button class="btn btn-primary">Update</button>
+            </div>
+        </form>
+    </div>
+
+    
+
+<script src="{% static 'js/function.js' %}"></script>
+<script src="{% static 'bootstraps-files/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

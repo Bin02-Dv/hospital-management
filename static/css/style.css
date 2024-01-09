@@ -1,0 +1,13 @@
+body{
+    background: url('/static/bg-images/patient-bg3.jpg');
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    height: 100vh;
+}
+
+.offcanvas{
+    background: url('/static/bg-images/patient-bg2.jpg');
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+}

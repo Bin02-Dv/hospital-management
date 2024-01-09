@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient-record-home page</title>
+    <link rel="stylesheet" href="{% static 'bootstraps-files/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstraps-files/lineawesome/css/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <style>
+        *{
+            list-style: none;
+        }
+
+        .header{
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .header h4{
+            background-color: dodgerblue;
+            padding: 10px;
+            border-radius: 7px;
+        }
+
+        a:link{
+            text-decoration: none;
+        }
+
+        ul a{
+            font-size: 20px;
+            background-color: dodgerblue;
+            color: #fff;
+            padding: 9px;
+            border-radius: 0 0 10px 0;
+            font-style: italic;
+        }
+
+        ul a:hover{
+            font-style: normal;
+            color: #fff;
+            padding: 10px;
+        }
+
+        ul li{
+            margin-top: 25px;
+        }
+
+        .row_1 i{
+            width: 20%;
+        }
+        .row_1 input{
+            width: 80%;
+        }
+        .row{
+            margin-top: 20px;
+        }
+
+        .address textarea{
+            margin-bottom: 10px;
+        }
+
+        .body{
+            /* margin-top: 200px; */
+            /* text-align: center; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 50px;
+            background-color: #fff;
+            opacity: .8;
+        }
+
+        .body h2{
+            font-weight: 900;
+            font-size: 300%;
+        }
+        .body form {
+            width: 40%;
+        }
+
+        .body span{
+            font-weight: 100;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <!-- <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i class="la la-bars"></i></button> -->
+        <div class="brand">
+            <h4>Patient Record Management System</h4>
+        </div>
+    </header>
+
+    <div class="body">
+        <h3>Name: <span>{{p.full_name}}</span></h3>
+        <h3>D.O.B: <span>{{p.dob}}</span></h3>
+        <h3>Gender: <span>{{p.gender}}</span></h3>
+        <h3>Address: <span>{{p.addrss}}</span></h3>
+        <h3>State: <span>{{p.state}}</span></h3>
+        <h3>L.G.A: <span>{{p.lga}}</span></h3>
+        <h3>Marital Status: <span>{{p.marital}}</span></h3>
+        <h3>Room: <span>{{p.room}}</span></h3>
+        <h3>Apparatus: <span>{{p.apparatus}}</span></h3>
+        <h3>Code: <span>{{p.code}}</span></h3>
+    </div>
+
+    
+
+<script src="{% static 'js/function.js' %}"></script>
+<script src="{% static 'bootstraps-files/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>
